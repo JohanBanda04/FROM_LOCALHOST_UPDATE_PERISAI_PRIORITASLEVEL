@@ -262,7 +262,12 @@
                                                     //echo $dt_divisi->nama_divisi;
                                                     @endphp
                                                 </td>
-                                                <td>{{ \App\Models\Berita::where('prioritas_id',$d->prioritas_id)->first()->prioritas->nama_prioritas_lengkap }}</td>
+                                                <td>
+                                                    @if($d->prioritas_id!="")
+                                                        {{ \App\Models\Berita::where('prioritas_id',$d->prioritas_id)->first()->prioritas->nama_prioritas_lengkap }}</td>
+                                                    @elseif($d->prioritas_id=="")
+                                                        <span> - </span>
+                                                    @endif
                                                 <td>{{ date('d-m-Y',strtotime($d->tgl_input)) }}</td>
 
                                                 <td style=" max-width: -moz-fit-content; max-width: fit-content;
